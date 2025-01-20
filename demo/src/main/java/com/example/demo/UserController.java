@@ -16,7 +16,18 @@ public class UserController {
 
 
     }
+    @GetMapping("/accounts")
+    public List<User> getAccounts(){
 
+        return  List.of(
+                new User(
+                        1L,
+                        "sean",
+                        "kembosean7@gmail.com",
+                        90.00,
+                        "savings")
+        );
+    }
 
 
 
