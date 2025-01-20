@@ -10,23 +10,24 @@ import java.util.List;
 @RequestMapping(path = "api/bank")
 public class UserController {
 
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    private  final UserService userService;
+
     @GetMapping("/home")
     public String home(){
-        return  "Welcome to the Banking Api";
-
+        return userService.home();
 
     }
+
+
     @GetMapping("/accounts")
     public List<User> getAccounts(){
+        return userService.getAccounts();
 
-        return  List.of(
-                new User(
-                        1L,
-                        "sean",
-                        "kembosean7@gmail.com",
-                        90.00,
-                        "savings")
-        );
+
     }
 
 
