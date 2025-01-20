@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @SpringBootApplication
 @RestController
 public class DemoApplication {
@@ -14,9 +16,16 @@ public class DemoApplication {
 	}
 
 	@GetMapping
-	public String hello(){
+	public List<User> home(){
 
-		return "Welcome to the Banking Api";
+		return  List.of(
+				new User(
+						1L,
+						"sean",
+						"kembosean7@gmail.com",
+						90.00,
+						"savings")
+		);
 	}
 
 }
