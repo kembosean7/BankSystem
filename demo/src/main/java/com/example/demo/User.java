@@ -4,19 +4,16 @@ package com.example.demo;
 import jakarta.persistence.*;
 
 @Entity
-@Table
+@Table(
+        name = "users",
+        uniqueConstraints = @UniqueConstraint(
+                name = "email_unique",
+                columnNames = "email"
+        ))
 public class User {
     @Id
-    @SequenceGenerator(
-            name = "student_sequence",
-            sequenceName = "student_sequence",
-            allocationSize = 1
-
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "student_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userId_sequence")
+    @SequenceGenerator(sequenceName = "userId_sequence", name = "userId_sequence", allocationSize = 1)
     private Long id;
     private String name;
     private String email;
