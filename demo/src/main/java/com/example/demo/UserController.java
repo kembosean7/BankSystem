@@ -37,6 +37,10 @@ public class UserController {
         userService.addNewAccount(user);
     }
 
+    @DeleteMapping(path = "/accounts/{id}")
+    public void deleteAccount(@PathVariable("id") Long id){
+        userService.deleteAccountById(id);
+    }
 
 
 
