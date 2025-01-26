@@ -1,10 +1,13 @@
 package com.example.demo;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -38,7 +41,7 @@ public class UserService {
         Optional<User> accountOptional = userRepository
                 .findAccountByEmail(user.getEmail());
         if (accountOptional.isPresent()){
-            throw new IllegalStateException(("Email taken"));
+            throw new IllegalStateException(("Email already taken"));
         }
         userRepository.save(user);
     }
@@ -52,4 +55,24 @@ public class UserService {
         userRepository.deleteById(id);
 
     }
+
+    @Transactional
+    public void updateAccount(Long id, String name, String email){
+        User user = userRepository.findById(id).orElseThrow(() -> new IllegalStateException("Account with ID: " + id + " does not exist"));
+
+        if (name != null && !name.isEmpty() && !Objects.equals(user.getName(), name)){
+            user.setName(name);
+        }
+
+        if (email != null && !email.isEmpty() && !Objects.equals(user.getEmail(), email)){
+            Optional<User> accountOptional = userRepository.findAccountByEmail(email);
+            if (accountOptional.isPresent()){
+                throw new IllegalStateException("Email already taken");
+            }
+            user.setEmail(email);
+        }
+
+        userRepository.save(user);
+    }
+
 }

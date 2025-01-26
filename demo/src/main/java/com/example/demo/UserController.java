@@ -42,6 +42,16 @@ public class UserController {
         userService.deleteAccountById(id);
     }
 
+    @PutMapping(path="/accounts/{id}")
+    public void updateAccount(
+            @PathVariable("id") Long id,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String email){
+        userService.updateAccount(id, name , email);
+    }
+
+
+
 
 
 }
