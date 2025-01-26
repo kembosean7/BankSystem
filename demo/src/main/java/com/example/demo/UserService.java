@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -32,4 +33,13 @@ public class UserService {
     }
 
 
+    public void addNewAccount(User user) {
+
+        Optional<User> accountOptional = userRepository
+                .findAccountByEmail(user.getEmail());
+        if (accountOptional.isPresent()){
+            throw new IllegalStateException(("Email taken"));
+        }
+        userRepository.save(user);
+    }
 }

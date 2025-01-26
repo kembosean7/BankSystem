@@ -1,10 +1,7 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,22 +19,23 @@ public class UserController {
     @GetMapping("/home")
     public String home(){
         return userService.home();
-
     }
 
 
     @GetMapping("/accounts")
     public List<User> getAccounts(){
         return userService.getAccounts();
-
-
     }
+
     @GetMapping("/accounts/{id}")
     public User getAccountById(@PathVariable Long id){
         return userService.getAccountById(id);
     }
 
-
+    @PostMapping
+    public void registerNewAccount(@RequestBody User user){
+        userService.addNewAccount(user);
+    }
 
 
 
