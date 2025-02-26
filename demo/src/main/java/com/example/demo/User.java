@@ -11,9 +11,10 @@ import jakarta.persistence.*;
                 columnNames = "email"
         ))
 public class User {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userId_sequence")
-    @SequenceGenerator(sequenceName = "userId_sequence", name = "userId_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
     private String name;
     private String email;
