@@ -133,11 +133,19 @@ public class User {
         this.password = password;
     }
 
+    public String getAccount_number() {
+        return account_number;
+    }
+
+    public void setAccount_number(String account_number) {
+        this.account_number = account_number;
+    }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
+                ", account_number='" + account_number + '\'' +
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
                 ", email='" + email + '\'' +
