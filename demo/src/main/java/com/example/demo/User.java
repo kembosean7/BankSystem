@@ -2,19 +2,35 @@ package com.example.demo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @Entity
 @Table(
         name = "users",
-        uniqueConstraints = @UniqueConstraint(
-                name = "email_unique",
-                columnNames = "email"
-        ))
+        uniqueConstraints = {@UniqueConstraint(name = "email_unique", columnNames = "email"),
+                            @UniqueConstraint(name = "account_number_unique", columnNames = "account_number")
+
+        })
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+
+    @Column(name = "account_number", nullable = false, unique = true, length = 50)
+    private String account_number;
+
+    @PrePersist
+    public void generateAccountNumber(){
+        if(this.account_number == null || this.account_number.isEmpty()){
+            this.account_number = generateRandomAccountNumber();
+        }
+    }
+
+    private String generateRandomAccountNumber(){
+        return UUID.randomUUID().toString().replace("-","").substring(0,10);
+    }
 
     @Column(length = 100, nullable = false)
     private String first_name;
