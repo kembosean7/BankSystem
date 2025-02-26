@@ -1,8 +1,6 @@
 package com.example.demo;
-
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-
 import java.math.BigDecimal;
 
 @Entity
@@ -33,24 +31,30 @@ public class User {
     @Column(name = "balance", nullable = false, precision = 15, scale = 2)
     private BigDecimal balance;
 
+    @Column(nullable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String password;
+
 
     public User() {
 
     }
 
-    public User(Long id, String first_name, String last_name, String email, BigDecimal balance, String type) {
+    public User(Long id, String first_name, String last_name, String email, String password, BigDecimal balance, String type) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
+        this.password = password;
         this.balance = balance;
         this.type = type;
     }
 
-    public User(String type, BigDecimal balance, String email, String first_name, String last_name) {
+    public User(String type, BigDecimal balance, String email,String password, String first_name, String last_name) {
         this.type = type;
         this.balance = balance;
         this.email = email;
+        this.password = password;
         this.first_name = first_name;
         this.last_name = last_name;
     }
@@ -105,6 +109,14 @@ public class User {
         this.type = type;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 
     @Override
     public String toString() {
@@ -113,8 +125,9 @@ public class User {
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
                 ", email='" + email + '\'' +
-                ", balance=" + balance +
                 ", type='" + type + '\'' +
+                ", balance=" + balance +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

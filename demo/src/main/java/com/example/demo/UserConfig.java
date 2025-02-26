@@ -18,8 +18,9 @@ public class UserConfig {
                     "current",
                     new BigDecimal("10.75"),
                     "kembosean@gmail.com",
-                    "Sean",
+                    "kembosean7",
 
+                    "Sean",
                     "Kembo"
             );
             User alex = new User(
@@ -27,6 +28,7 @@ public class UserConfig {
                     "savings",
                     new BigDecimal("00.0"),
                     "alexander@gmail.com",
+                    "alexagu@22",
                     "Alexander",
                     "Agu"
             );
