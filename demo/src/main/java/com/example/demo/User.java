@@ -34,19 +34,21 @@ public class User {
 
     }
 
-    public User(Long id, String first_name, String email, BigDecimal balance, String type) {
+    public User(Long id, String first_name, String last_name, String email, BigDecimal balance, String type) {
         this.id = id;
         this.first_name = first_name;
+        this.last_name = last_name;
         this.email = email;
         this.balance = balance;
         this.type = type;
     }
 
-    public User(String type, BigDecimal balance, String email, String first_name) {
+    public User(String type, BigDecimal balance, String email, String first_name, String last_name) {
         this.type = type;
         this.balance = balance;
         this.email = email;
         this.first_name = first_name;
+        this.last_name = last_name;
     }
 
     public Long getId() {
@@ -64,6 +66,19 @@ public class User {
     public void setFirst_name(String first_name) {
         this.first_name = first_name;
     }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
+    }
+
+    @Column(length = 100, nullable = false)
+    private String last_name;
+
+
 
     public String getEmail() {
         return email;
@@ -94,7 +109,8 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + first_name+ '\'' +
+                ", first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
                 ", email='" + email + '\'' +
                 ", balance=" + balance +
                 ", type='" + type + '\'' +

@@ -18,14 +18,17 @@ public class UserConfig {
                     "current",
                     new BigDecimal("10.75"),
                     "kembosean@gmail.com",
-                    "Sean"
+                    "Sean",
+
+                    "Kembo"
             );
             User alex = new User(
 
                     "savings",
                     new BigDecimal("00.0"),
                     "alexander@gmail.com",
-                    "Alex"
+                    "Alexander",
+                    "Agu"
             );
             repository.saveAll(List.of(sean, alex));
 
