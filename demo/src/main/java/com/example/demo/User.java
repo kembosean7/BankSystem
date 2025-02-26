@@ -3,6 +3,8 @@ package com.example.demo;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(
         name = "users",
@@ -14,20 +16,25 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
 
-
+    @Column(length = 100, nullable = false)
     private String first_name;
+
+    @Column(length = 100, nullable = false)
     private String email;
-    private Double balance;
+
+    @Column(name = "balance", nullable = false, precision = 15, scale = 2)
+    private BigDecimal balance;
+
+    @Column(length = 50, nullable = false)
     private String type;
 
     public User() {
 
     }
 
-    public User(Long id, String first_name, String email, Double balance, String type) {
+    public User(Long id, String first_name, String email, BigDecimal balance, String type) {
         this.id = id;
         this.first_name = first_name;
         this.email = email;
@@ -35,7 +42,7 @@ public class User {
         this.type = type;
     }
 
-    public User(String type, Double balance, String email, String first_name) {
+    public User(String type, BigDecimal balance, String email, String first_name) {
         this.type = type;
         this.balance = balance;
         this.email = email;
@@ -66,11 +73,11 @@ public class User {
         this.email = email;
     }
 
-    public Double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(Double balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 

@@ -4,6 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Configuration
@@ -15,14 +16,14 @@ public class UserConfig {
         return args -> {
             User sean = new User(
                     "current",
-                    00.0,
+                    new BigDecimal("10.75"),
                     "kembosean@gmail.com",
                     "Sean"
             );
             User alex = new User(
 
                     "savings",
-                    00.0,
+                    new BigDecimal("00.0"),
                     "alexander@gmail.com",
                     "Alex"
             );
