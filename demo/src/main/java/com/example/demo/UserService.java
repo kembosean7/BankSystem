@@ -60,8 +60,8 @@ public class UserService {
     public void updateAccount(Long id, String name, String email){
         User user = userRepository.findById(id).orElseThrow(() -> new IllegalStateException("Account with ID: " + id + " does not exist"));
 
-        if (name != null && !name.isEmpty() && !Objects.equals(user.getName(), name)){
-            user.setName(name);
+        if (name != null && !name.isEmpty() && !Objects.equals(user.getFirst_name(), name)){
+            user.setFirst_name(name);
         }
 
         if (email != null && !email.isEmpty() && !Objects.equals(user.getEmail(), email)){

@@ -16,7 +16,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
-    private String name;
+
+
+    private String first_name;
     private String email;
     private Double balance;
     private String type;
@@ -25,19 +27,19 @@ public class User {
 
     }
 
-    public User(Long id, String name, String email, Double balance, String type) {
+    public User(Long id, String first_name, String email, Double balance, String type) {
         this.id = id;
-        this.name = name;
+        this.first_name = first_name;
         this.email = email;
         this.balance = balance;
         this.type = type;
     }
 
-    public User(String type, Double balance, String email, String name) {
+    public User(String type, Double balance, String email, String first_name) {
         this.type = type;
         this.balance = balance;
         this.email = email;
-        this.name = name;
+        this.first_name = first_name;
     }
 
     public Long getId() {
@@ -48,12 +50,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
     }
 
     public String getEmail() {
@@ -85,7 +87,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + first_name+ '\'' +
                 ", email='" + email + '\'' +
                 ", balance=" + balance +
                 ", type='" + type + '\'' +
