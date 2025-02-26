@@ -22,13 +22,17 @@ public class User {
     private String first_name;
 
     @Column(length = 100, nullable = false)
+    private String last_name;
+
+    @Column(length = 100, nullable = false)
     private String email;
+
+    @Column(length = 50, nullable = false)
+    private String type;
 
     @Column(name = "balance", nullable = false, precision = 15, scale = 2)
     private BigDecimal balance;
 
-    @Column(length = 50, nullable = false)
-    private String type;
 
     public User() {
 
@@ -74,9 +78,6 @@ public class User {
     public void setLast_name(String last_name) {
         this.last_name = last_name;
     }
-
-    @Column(length = 100, nullable = false)
-    private String last_name;
 
 
 
