@@ -1,8 +1,9 @@
-package com.example.demo;
+package com.example.demo.User;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -18,7 +19,7 @@ public class UserConfig {
                     "current",
                     new BigDecimal("10.75"),
                     "kembosean@gmail.com",
-                    "kembosean7",
+                    new BCryptPasswordEncoder().encode("kembosean7"),
 
                     "Sean",
                     "Kembo"
@@ -28,7 +29,7 @@ public class UserConfig {
                     "savings",
                     new BigDecimal("00.0"),
                     "alexander@gmail.com",
-                    "alexagu@22",
+                    new BCryptPasswordEncoder().encode("alexagu@22"),
                     "Alexander",
                     "Agu"
             );

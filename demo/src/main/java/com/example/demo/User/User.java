@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.User;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import java.math.BigDecimal;

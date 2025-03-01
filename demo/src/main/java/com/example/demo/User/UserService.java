@@ -1,11 +1,10 @@
-package com.example.demo;
+package com.example.demo.User;
 
 import org.springframework.transaction.annotation.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
