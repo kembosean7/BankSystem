@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/bank")
+@RequestMapping(path = "api/bank/accounts")
 public class UserController {
 
     @Autowired
@@ -15,11 +15,6 @@ public class UserController {
     }
 
     private  final UserService userService;
-
-    @GetMapping("/home")
-    public String home(){
-        return userService.home();
-    }
 
 
     @GetMapping("/accounts")
