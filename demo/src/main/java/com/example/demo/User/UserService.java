@@ -23,15 +23,17 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    //Method to get all accounts from database
     public List<User> getAccounts(){
 
         return userRepository.findAll();
 
     }
 
+    //Method to get account by ID from database
     public User getAccountById(Long id){
 
-        return userRepository.findById(id).orElse(null);
+        return userRepository.findById(id).orElseThrow(() -> new IllegalStateException("User with ID " + id + " not found"));
     }
 
 
