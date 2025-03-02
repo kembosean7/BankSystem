@@ -36,6 +36,12 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(() -> new IllegalStateException("User with ID " + id + " not found"));
     }
 
+    //Method to get account by account number
+    public User getAccountByAccNo(String accountId){
+
+        return userRepository.findByAccountNumber(accountId).orElseThrow(() -> new IllegalStateException("User with account number "+ accountId + " not found"));
+    }
+
 
     public void addNewAccount(User user) {
 

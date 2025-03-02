@@ -19,12 +19,12 @@ public class User {
 
 
     @Column(name = "account_number", nullable = false, unique = true, length = 50)
-    private String account_number;
+    private String accountNumber;
 
     @PrePersist
     public void generateAccountNumber(){
-        if(this.account_number == null || this.account_number.isEmpty()){
-            this.account_number = generateRandomAccountNumber();
+        if(this.accountNumber == null || this.accountNumber.isEmpty()){
+            this.accountNumber = generateRandomAccountNumber();
         }
     }
 
@@ -134,18 +134,18 @@ public class User {
     }
 
     public String getAccount_number() {
-        return account_number;
+        return accountNumber;
     }
 
     public void setAccount_number(String account_number) {
-        this.account_number = account_number;
+        this.accountNumber = account_number;
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", account_number='" + account_number + '\'' +
+                ", account_number='" + accountNumber + '\'' +
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
                 ", email='" + email + '\'' +
