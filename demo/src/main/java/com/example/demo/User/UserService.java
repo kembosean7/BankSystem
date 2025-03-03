@@ -50,7 +50,26 @@ public class UserService {
         if (accountOptional.isPresent()){
             throw new IllegalStateException(("Email already taken"));
         }
+
         userRepository.save(user);
+    }
+    private  boolean validatPassword(String password) {
+        if (password.isEmpty()) {
+            throw new IllegalStateException("Password cannot be empty");
+        }
+
+        if (password.length() < 8) {
+            throw new IllegalStateException("Password must be at least 8 characters long");
+        }
+
+        if (!password.matches(".*\\d.*")) {
+            throw new IllegalArgumentException("Password must contain at least one number");
+        }
+
+        if (password.matches(".*[!@#$%^&*(),.?\":{}|<>].*")) {
+            throw new IllegalArgumentException("Password must contain at least one special character");
+        }
+        return true;
     }
 
     public void deleteAccountById(Long id) {
