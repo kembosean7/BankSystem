@@ -27,6 +27,10 @@ public class UserController {
         return userService.getAccountById(id);
     }
 
+    @GetMapping("accountId/{accountId}")
+    public User getAccountByAccNo(@PathVariable String accountId){
+        return userService.getAccountByAccNo(accountId);
+    }
     @PostMapping
     public void registerNewAccount(@RequestBody User user){
         userService.addNewAccount(user);
