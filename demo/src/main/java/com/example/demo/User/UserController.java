@@ -31,7 +31,7 @@ public class UserController {
     public User getAccountByAccNo(@PathVariable String accountId){
         return userService.getAccountByAccNo(accountId);
     }
-    @PostMapping
+    @PostMapping("signup")
     public void registerNewAccount(@RequestBody User user){
         userService.addNewAccount(user);
     }
